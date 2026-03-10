@@ -1,0 +1,360 @@
+/* ============================================================
+   360 Property Tour — styles.css
+   Luxury real estate aesthetic. Edit freely for branding.
+   ============================================================ */
+
+/* ── Reset & base ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --cream:       #f7f4ef;
+  --sand:        #e8e1d5;
+  --charcoal:    #1c1c1e;
+  --ink:         #2d2d2f;
+  --gold:        #c9a96e;
+  --gold-light:  #e8c98a;
+  --glass-dark:  rgba(18, 17, 15, 0.72);
+  --glass-light: rgba(255, 253, 248, 0.12);
+  --radius-card: 20px;
+  --radius-btn:  10px;
+  --shadow-card: 0 24px 64px rgba(0,0,0,0.22), 0 4px 16px rgba(0,0,0,0.12);
+  --font-display: 'Cormorant Garamond', 'Georgia', serif;
+  --font-body:    'DM Sans', 'Helvetica Neue', sans-serif;
+  --transition:   0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+html, body {
+  height: 100%;
+  background: var(--cream);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 15px;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Page wrapper ─────────────────────────────────────────── */
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px 60px;
+  background:
+    radial-gradient(ellipse 80% 60% at 60% 0%, rgba(201,169,110,0.10) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 10% 100%, rgba(201,169,110,0.08) 0%, transparent 60%),
+    var(--cream);
+}
+
+/* ── Tour container ───────────────────────────────────────── */
+.tour-container {
+  width: 100%;
+  max-width: 1200px;
+}
+
+/* ── Header ───────────────────────────────────────────────── */
+.tour-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  gap: 16px;
+}
+
+.tour-header-left {}
+
+.tour-eyebrow {
+  font-family: var(--font-body);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.tour-title {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 4vw, 44px);
+  font-weight: 300;
+  color: var(--charcoal);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.tour-subtitle {
+  font-size: 13px;
+  color: #888;
+  margin-top: 4px;
+  letter-spacing: 0.03em;
+}
+
+/* ── Viewer card ──────────────────────────────────────────── */
+#viewer-card {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: var(--shadow-card);
+  background: var(--charcoal);
+}
+
+/* ── Pannellum viewport ───────────────────────────────────── */
+#panorama-viewer {
+  width: 100%;
+  height: 70vh;
+  min-height: 380px;
+  max-height: 760px;
+  display: block;
+}
+
+/* ── Overlay badge (top-left) ─────────────────────────────── */
+.viewer-badge {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 10;
+  background: var(--glass-dark);
+  backdrop-filter: blur(14px) saturate(1.4);
+  -webkit-backdrop-filter: blur(14px) saturate(1.4);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 12px;
+  padding: 10px 16px 11px;
+  pointer-events: none;
+}
+
+.badge-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 2px;
+}
+
+.badge-title {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+/* ── Viewer controls (top-right) ─────────────────────────── */
+.viewer-controls {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.ctrl-btn {
+  width: 40px;
+  height: 40px;
+  border: none;
+  border-radius: 10px;
+  background: var(--glass-dark);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.10);
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--transition), transform var(--transition);
+}
+
+.ctrl-btn:hover {
+  background: rgba(201,169,110,0.45);
+  transform: scale(1.07);
+}
+
+.ctrl-btn .icon { line-height: 1; }
+
+/* ── Loading overlay ──────────────────────────────────────── */
+#load-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+  background: var(--charcoal);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  transition: opacity 0.4s;
+}
+
+#load-overlay.is-error #load-spinner { display: none; }
+#load-overlay.is-error #load-msg { color: #f08080; }
+
+#load-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(201,169,110,0.25);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  animation: spin 0.9s linear infinite;
+}
+
+#load-msg {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  letter-spacing: 0.05em;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Caption row ──────────────────────────────────────────── */
+.viewer-caption {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 14px;
+  font-size: 12px;
+  color: #aaa;
+  letter-spacing: 0.06em;
+}
+
+.caption-icon {
+  font-size: 15px;
+  opacity: 0.65;
+}
+
+/* ── Scene navigation ─────────────────────────────────────── */
+#scene-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 22px;
+  justify-content: flex-start;
+}
+
+.scene-btn {
+  position: relative;
+  padding: 10px 20px;
+  border: 1.5px solid var(--sand);
+  border-radius: var(--radius-btn);
+  background: #fff;
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--transition);
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Thumbnail variant */
+.scene-btn.has-thumb {
+  padding-left: 52px;
+  background-size: cover;
+  background-position: center;
+}
+
+.scene-btn.has-thumb::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(247,244,239,0.85);
+  transition: background var(--transition);
+}
+
+.scene-btn.has-thumb span,
+.scene-btn.has-thumb {
+  position: relative;
+}
+
+.scene-btn:hover {
+  border-color: var(--gold);
+  color: #7a5c22;
+  box-shadow: 0 4px 18px rgba(201,169,110,0.18);
+  transform: translateY(-1px);
+}
+
+.scene-btn.active {
+  border-color: var(--gold);
+  background: var(--gold);
+  color: #fff;
+  box-shadow: 0 4px 20px rgba(201,169,110,0.35);
+}
+
+.scene-btn.active::before { background: transparent; }
+
+/* ── Hotspot styling ──────────────────────────────────────── */
+.tour-hotspot {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--gold);
+  border: 3px solid #fff;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  animation: pulse-ring 2.4s ease-out infinite;
+}
+
+.tour-hotspot:hover {
+  transform: scale(1.25);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+}
+
+@keyframes pulse-ring {
+  0%   { box-shadow: 0 0 0 0 rgba(201,169,110,0.55), 0 2px 12px rgba(0,0,0,0.4); }
+  60%  { box-shadow: 0 0 0 12px rgba(201,169,110,0), 0 2px 12px rgba(0,0,0,0.4); }
+  100% { box-shadow: 0 0 0 0 rgba(201,169,110,0), 0 2px 12px rgba(0,0,0,0.4); }
+}
+
+/* Pannellum tooltip */
+.pnlm-tooltip span {
+  background: var(--glass-dark) !important;
+  backdrop-filter: blur(12px) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  border-radius: 8px !important;
+  color: #fff !important;
+  font-family: var(--font-body) !important;
+  font-size: 12px !important;
+  padding: 6px 12px !important;
+  white-space: nowrap !important;
+}
+
+/* ── Fullscreen adjustments ───────────────────────────────── */
+#viewer-card:fullscreen #panorama-viewer,
+#viewer-card:-webkit-full-screen #panorama-viewer {
+  height: 100vh;
+  max-height: none;
+}
+
+/* ── Responsive ───────────────────────────────────────────── */
+@media (max-width: 720px) {
+  .page-wrapper { padding: 24px 14px 40px; }
+
+  #panorama-viewer {
+    height: 55vw;
+    min-height: 260px;
+  }
+
+  .tour-header { flex-direction: column; align-items: flex-start; }
+
+  #scene-nav { gap: 8px; }
+
+  .scene-btn {
+    font-size: 12px;
+    padding: 8px 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .viewer-badge { top: 12px; left: 12px; padding: 8px 12px; }
+  .badge-title  { font-size: 14px; }
+  .viewer-controls { top: 10px; right: 10px; }
+  .ctrl-btn { width: 34px; height: 34px; font-size: 14px; }
+}

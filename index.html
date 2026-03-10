@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>360 Virtual Tour</title><!-- Updated by app.js from config -->
+
+  <!-- Google Fonts: display + body pairing -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Pannellum CDN -->
+  <link  rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.css" />
+  <script src="https://cdn.jsdelivr.net/npm/pannellum@2.5.6/build/pannellum.js"></script>
+
+  <!-- Tour styles -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="page-wrapper">
+    <div class="tour-container">
+
+      <!-- ── Header ──────────────────────────────────────── -->
+      <header class="tour-header">
+        <div class="tour-header-left">
+          <p class="tour-eyebrow">Virtual Tour</p>
+          <h1 class="tour-title" id="property-title">Loading…</h1>
+          <p class="tour-subtitle" id="property-subtitle"></p>
+        </div>
+      </header>
+
+      <!-- ── Viewer card ─────────────────────────────────── -->
+      <div id="viewer-card">
+
+        <!-- 360 panorama viewport -->
+        <div id="panorama-viewer"></div>
+
+        <!-- Top-left badge overlay -->
+        <div class="viewer-badge" aria-hidden="true">
+          <div class="badge-label">360° Tour</div>
+          <div class="badge-title" id="badge-scene-name">—</div>
+        </div>
+
+        <!-- Top-right controls -->
+        <div class="viewer-controls">
+          <button class="ctrl-btn" id="btn-fullscreen" title="Fullscreen" aria-label="Toggle fullscreen">
+            <span class="icon">⛶</span>
+          </button>
+          <button class="ctrl-btn" id="btn-zoom-in"  title="Zoom in"  aria-label="Zoom in">
+            <span class="icon">+</span>
+          </button>
+          <button class="ctrl-btn" id="btn-zoom-out" title="Zoom out" aria-label="Zoom out">
+            <span class="icon">−</span>
+          </button>
+        </div>
+
+        <!-- Loading / error overlay -->
+        <div id="load-overlay">
+          <div id="load-spinner"></div>
+          <p id="load-msg">Loading panorama…</p>
+        </div>
+
+      </div><!-- /viewer-card -->
+
+      <!-- ── Caption ─────────────────────────────────────── -->
+      <p class="viewer-caption">
+        <span class="caption-icon">✦</span>
+        Drag to explore · Scroll to zoom · Click arrows to move between rooms
+      </p>
+
+      <!-- ── Scene selector ──────────────────────────────── -->
+      <nav id="scene-nav" aria-label="Scene navigation"></nav>
+
+    </div><!-- /tour-container -->
+  </div><!-- /page-wrapper -->
+
+  <!-- Config must load before app.js -->
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+
+</body>
+</html>
