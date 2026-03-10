@@ -34,6 +34,20 @@
       <!-- ── Viewer card ─────────────────────────────────── -->
       <div id="viewer-card">
 
+        <!-- Metareal 3D tour (shown when metarealUrl is set) -->
+        <div id="metareal-container" style="display:none;">
+          <iframe
+            id="metareal-frame"
+            src=""
+            width="100%"
+            height="100%"
+            frameborder="0"
+            allowfullscreen
+            allow="xr-spatial-tracking"
+            title="3D Virtual Tour">
+          </iframe>
+        </div>
+
         <!-- 360 panorama viewport -->
         <div id="panorama-viewer"></div>
 

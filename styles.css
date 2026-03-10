@@ -326,6 +326,24 @@ html, body {
   white-space: nowrap !important;
 }
 
+/* ── Metareal iframe container ────────────────────────────── */
+#metareal-container {
+  width: 100%;
+  height: 70vh;
+  min-height: 380px;
+  max-height: 760px;
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  background: var(--charcoal);
+}
+
+#metareal-container iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
 /* ── Fullscreen adjustments ───────────────────────────────── */
 #viewer-card:fullscreen #panorama-viewer,
 #viewer-card:-webkit-full-screen #panorama-viewer {
@@ -338,6 +356,11 @@ html, body {
   .page-wrapper { padding: 24px 14px 40px; }
 
   #panorama-viewer {
+    height: 55vw;
+    min-height: 260px;
+  }
+
+  #metareal-container {
     height: 55vw;
     min-height: 260px;
   }
