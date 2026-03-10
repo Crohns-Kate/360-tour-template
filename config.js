@@ -25,7 +25,7 @@ const TOUR_CONFIG = {
 
   // ── DEFAULT SCENE ───────────────────────────────────────────
   // Must match one of the scene `id` values below
-  defaultSceneId: "living",
+  defaultSceneId: "front",
 
   // ── DAY / DUSK MODE ─────────────────────────────────────────
   // Default view when the tour loads. Toggle button switches between them.
@@ -40,100 +40,103 @@ const TOUR_CONFIG = {
   // Add or remove objects in this array to add/remove rooms.
   // Each scene is one panorama image.
   scenes: [
-    {
-      id:        "living",               // Unique ID (used by hotspots)
-      title:     "Front View",           // Shown in the scene selector
-      thumbnail: "./images/thumb-1.jpg", // Small preview image (optional)
 
-      // Day = original photo, Dusk = AI-rendered version
+    // ── Scene 1: Front View (exterior) ──────────────────────
+    {
+      id:           "front",
+      title:        "Front View",
       panorama:     "./images/scene-1-dusk.jpg",
       panoramaDay:  "./images/scene-1-day.jpg",
       panoramaDusk: "./images/scene-1-dusk.jpg",
-
-      // Starting camera angle when this scene loads
-      yaw:   0,     // Horizontal angle in degrees  (-180 to 180)
-      pitch: 0,     // Vertical angle in degrees   (-90 to 90)
-      hfov:  100,   // Horizontal field of view     (50–120 recommended)
-
-      // Hotspots: clickable arrows that jump to another scene.
-      // Delete or leave the array empty if you don't want hotspots.
+      yaw: 0, pitch: 0, hfov: 100,
       hotspots: [
-        {
-          pitch:         -10,       // Where the hotspot dot appears (vertical)
-          yaw:            80,       // Where the hotspot dot appears (horizontal)
-          targetSceneId: "pool",    // Which scene to switch to on click
-          text:          "Pool Deck"// Tooltip label
-        },
-        {
-          pitch:         -5,
-          yaw:           -120,
-          targetSceneId: "master",
-          text:          "Master Suite"
-        }
+        { pitch: -10, yaw: 80,   targetSceneId: "pool",    text: "Pool Deck" },
+        { pitch: -8,  yaw: -40,  targetSceneId: "living",  text: "Living & Dining" }
       ]
     },
 
+    // ── Scene 2: Pool Deck (exterior) ───────────────────────
     {
-      id:        "pool",
-      title:     "Pool & Outdoor Terrace",
-      thumbnail: "./images/thumb-2.jpg",
-
-      // ── REPLACE THIS PATH ──
-      panorama:  "./images/scene-2.jpg",
-
-      yaw:   0,
-      pitch: 0,
-      hfov:  110,
-
+      id:           "pool",
+      title:        "Pool Deck",
+      panorama:     "./images/scene-2-day.jpg",
+      panoramaDay:  "./images/scene-2-day.jpg",
+      yaw: 0, pitch: 0, hfov: 105,
       hotspots: [
-        {
-          pitch:         -8,
-          yaw:            160,
-          targetSceneId: "living",
-          text:          "Living Area"
-        },
-        {
-          pitch:         -5,
-          yaw:           -30,
-          targetSceneId: "master",
-          text:          "Master Suite"
-        }
+        { pitch: -8,  yaw: 160,  targetSceneId: "front",   text: "Front View" },
+        { pitch: -8,  yaw: -20,  targetSceneId: "garden",  text: "Garden" },
+        { pitch: -5,  yaw: 40,   targetSceneId: "living",  text: "Living & Dining" }
       ]
     },
 
+    // ── Scene 3: Garden (exterior) ──────────────────────────
     {
-      id:        "master",
-      title:     "Master Suite",
-      thumbnail: "./images/thumb-3.jpg",
-
-      // ── REPLACE THIS PATH ──
-      panorama:  "./images/scene-3.jpg",
-
-      yaw:   45,    // Start rotated to face the bed
-      pitch: -5,
-      hfov:  95,
-
+      id:           "garden",
+      title:        "Garden",
+      panorama:     "./images/scene-3-day.jpg",
+      panoramaDay:  "./images/scene-3-day.jpg",
+      yaw: 0, pitch: 0, hfov: 105,
       hotspots: [
-        {
-          pitch:         -10,
-          yaw:            200,
-          targetSceneId: "living",
-          text:          "Back to Living"
-        }
+        { pitch: -10, yaw: -60,  targetSceneId: "pool",    text: "Pool Deck" },
+        { pitch: -8,  yaw: 120,  targetSceneId: "front",   text: "Front View" }
+      ]
+    },
+
+    // ── Scene 4: Living & Dining (interior) ─────────────────
+    {
+      id:           "living",
+      title:        "Living & Dining",
+      panorama:     "./images/scene-4-day.jpg",
+      panoramaDay:  "./images/scene-4-day.jpg",
+      yaw: 90, pitch: 0, hfov: 100,
+      hotspots: [
+        { pitch: -5,  yaw: -160, targetSceneId: "front",   text: "Front Door" },
+        { pitch: -8,  yaw: 60,   targetSceneId: "pool",    text: "Pool Deck" },
+        { pitch: -5,  yaw: -60,  targetSceneId: "kitchen", text: "Kitchen" },
+        { pitch: -5,  yaw: 140,  targetSceneId: "lounge",  text: "Lounge" }
+      ]
+    },
+
+    // ── Scene 5: Lounge (interior) ──────────────────────────
+    {
+      id:           "lounge",
+      title:        "Lounge",
+      panorama:     "./images/scene-5-day.jpg",
+      panoramaDay:  "./images/scene-5-day.jpg",
+      yaw: 0, pitch: 0, hfov: 100,
+      hotspots: [
+        { pitch: -8,  yaw: -80,  targetSceneId: "living",  text: "Living & Dining" },
+        { pitch: -8,  yaw: 60,   targetSceneId: "pool",    text: "Pool Deck" },
+        { pitch: -5,  yaw: 160,  targetSceneId: "kitchen", text: "Kitchen" }
+      ]
+    },
+
+    // ── Scene 6: Kitchen & Dining (interior) ────────────────
+    {
+      id:           "kitchen",
+      title:        "Kitchen",
+      panorama:     "./images/scene-6-day.jpg",
+      panoramaDay:  "./images/scene-6-day.jpg",
+      yaw: 90, pitch: 0, hfov: 100,
+      hotspots: [
+        { pitch: -5,  yaw: -90,  targetSceneId: "living",  text: "Living & Dining" },
+        { pitch: -8,  yaw: 30,   targetSceneId: "hallway", text: "Hallway" }
+      ]
+    },
+
+    // ── Scene 7: Hallway & Staircase (interior) ─────────────
+    {
+      id:           "hallway",
+      title:        "Hallway & Stairs",
+      panorama:     "./images/scene-7-day.jpg",
+      panoramaDay:  "./images/scene-7-day.jpg",
+      yaw: 0, pitch: 0, hfov: 100,
+      hotspots: [
+        { pitch: -5,  yaw: 160,  targetSceneId: "living",  text: "Living & Dining" },
+        { pitch: -5,  yaw: -90,  targetSceneId: "kitchen", text: "Kitchen" }
       ]
     }
 
-    // ── ADD MORE SCENES HERE ────────────────────────────────
-    // Copy the block above, give it a unique id, update panorama path.
-    // Example:
-    // ,{
-    //   id:        "kitchen",
-    //   title:     "Gourmet Kitchen",
-    //   thumbnail: "./images/thumb-4.jpg",
-    //   panorama:  "./images/scene-4.jpg",
-    //   yaw: 0, pitch: 0, hfov: 100,
-    //   hotspots: []
-    // }
   ]
 
 };
