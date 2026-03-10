@@ -377,46 +377,91 @@
 
       ctx.drawImage(img, sx, sy, sw, sh, 0, 0, THUMB_W, THUMB_H);
 
-      // ── Apply contrast + saturation boost via pixel manipulation ──
+      // ── BoxBrownie-style pixel grading ──
+      // Step 1: Brightness down (0.72), contrast up (1.25), hue shift cool
       var imageData = ctx.getImageData(0, 0, THUMB_W, THUMB_H);
       var data = imageData.data;
       for (var i = 0; i < data.length; i += 4) {
-        // Contrast boost (1.12)
-        data[i]     = clamp(((data[i]     / 255 - 0.5) * 1.12 + 0.5) * 255);
-        data[i + 1] = clamp(((data[i + 1] / 255 - 0.5) * 1.12 + 0.5) * 255);
-        data[i + 2] = clamp(((data[i + 2] / 255 - 0.5) * 1.12 + 0.5) * 255);
+        var r = data[i], g = data[i + 1], b = data[i + 2];
 
-        // Slight brightness reduction (0.88)
-        data[i]     = clamp(data[i]     * 0.88);
-        data[i + 1] = clamp(data[i + 1] * 0.88);
-        data[i + 2] = clamp(data[i + 2] * 0.88);
+        // Brightness reduction (0.72)
+        r *= 0.72; g *= 0.72; b *= 0.72;
+
+        // Contrast boost (1.25)
+        r = ((r / 255 - 0.5) * 1.25 + 0.5) * 255;
+        g = ((g / 255 - 0.5) * 1.25 + 0.5) * 255;
+        b = ((b / 255 - 0.5) * 1.25 + 0.5) * 255;
+
+        // Saturation boost (1.35) via luminance mix
+        var lum = 0.2126 * r + 0.7152 * g + 0.0722 * b;
+        r = lum + (r - lum) * 1.35;
+        g = lum + (g - lum) * 1.35;
+        b = lum + (b - lum) * 1.35;
+
+        // Cool hue shift — push blues up, reds slightly down
+        r *= 0.95; b *= 1.08;
+
+        data[i]     = clamp(r);
+        data[i + 1] = clamp(g);
+        data[i + 2] = clamp(b);
       }
       ctx.putImageData(imageData, 0, 0);
 
-      // ── Sky darkening gradient (top 40%) ──
-      var skyGrad = ctx.createLinearGradient(0, 0, 0, THUMB_H * 0.4);
-      skyGrad.addColorStop(0,   "rgba(12, 17, 40, 0.62)");
-      skyGrad.addColorStop(0.4, "rgba(25, 30, 65, 0.40)");
-      skyGrad.addColorStop(0.7, "rgba(45, 40, 80, 0.18)");
-      skyGrad.addColorStop(1,   "rgba(45, 40, 80, 0)");
+      // Step 2: Blue-hour base tint (multiply blend)
+      ctx.globalCompositeOperation = "multiply";
+      ctx.fillStyle = "rgba(8, 12, 42, 0.38)";
+      ctx.fillRect(0, 0, THUMB_W, THUMB_H);
+      ctx.globalCompositeOperation = "source-over";
+
+      // Step 3: Deep navy sky — top 55%
+      var skyGrad = ctx.createLinearGradient(0, 0, 0, THUMB_H * 0.55);
+      skyGrad.addColorStop(0,    "rgba(6, 8, 28, 0.88)");
+      skyGrad.addColorStop(0.2,  "rgba(10, 14, 48, 0.78)");
+      skyGrad.addColorStop(0.4,  "rgba(18, 22, 62, 0.60)");
+      skyGrad.addColorStop(0.65, "rgba(30, 28, 72, 0.35)");
+      skyGrad.addColorStop(0.85, "rgba(45, 35, 80, 0.12)");
+      skyGrad.addColorStop(1,    "rgba(45, 35, 80, 0)");
       ctx.fillStyle = skyGrad;
-      ctx.fillRect(0, 0, THUMB_W, THUMB_H * 0.4);
+      ctx.fillRect(0, 0, THUMB_W, THUMB_H * 0.55);
 
-      // ── Warm amber gradient (bottom 30%) ──
-      var warmGrad = ctx.createLinearGradient(0, THUMB_H, 0, THUMB_H * 0.7);
-      warmGrad.addColorStop(0,   "rgba(200, 150, 60, 0.22)");
-      warmGrad.addColorStop(0.4, "rgba(220, 170, 80, 0.12)");
-      warmGrad.addColorStop(1,   "rgba(220, 170, 80, 0)");
+      // Step 4: Warm horizon band
+      var horzGrad = ctx.createLinearGradient(0, THUMB_H * 0.35, 0, THUMB_H * 0.55);
+      horzGrad.addColorStop(0,   "rgba(180, 100, 50, 0)");
+      horzGrad.addColorStop(0.3, "rgba(180, 100, 50, 0.10)");
+      horzGrad.addColorStop(0.5, "rgba(200, 120, 60, 0.14)");
+      horzGrad.addColorStop(0.7, "rgba(180, 100, 50, 0.10)");
+      horzGrad.addColorStop(1,   "rgba(180, 100, 50, 0)");
+      ctx.fillStyle = horzGrad;
+      ctx.fillRect(0, THUMB_H * 0.35, THUMB_W, THUMB_H * 0.20);
+
+      // Step 5: Warm amber ground wash — bottom 40%
+      var warmGrad = ctx.createLinearGradient(0, THUMB_H, 0, THUMB_H * 0.6);
+      warmGrad.addColorStop(0,   "rgba(210, 150, 40, 0.32)");
+      warmGrad.addColorStop(0.3, "rgba(220, 160, 50, 0.22)");
+      warmGrad.addColorStop(0.6, "rgba(200, 140, 60, 0.12)");
+      warmGrad.addColorStop(1,   "rgba(200, 140, 60, 0)");
       ctx.fillStyle = warmGrad;
-      ctx.fillRect(0, THUMB_H * 0.7, THUMB_W, THUMB_H * 0.3);
+      ctx.fillRect(0, THUMB_H * 0.6, THUMB_W, THUMB_H * 0.4);
 
-      // ── Blue-purple vignette ──
-      var vigGrad = ctx.createRadialGradient(
-        THUMB_W / 2, THUMB_H / 2, THUMB_W * 0.25,
-        THUMB_W / 2, THUMB_H / 2, THUMB_W * 0.75
+      // Step 6: Center-lower warm glow (window light)
+      var glowGrad = ctx.createRadialGradient(
+        THUMB_W / 2, THUMB_H * 0.62, 0,
+        THUMB_W / 2, THUMB_H * 0.62, THUMB_W * 0.5
       );
-      vigGrad.addColorStop(0, "rgba(20, 15, 45, 0)");
-      vigGrad.addColorStop(1, "rgba(20, 15, 45, 0.35)");
+      glowGrad.addColorStop(0,   "rgba(255, 185, 60, 0.18)");
+      glowGrad.addColorStop(0.4, "rgba(240, 160, 40, 0.10)");
+      glowGrad.addColorStop(0.7, "rgba(240, 160, 40, 0)");
+      ctx.fillStyle = glowGrad;
+      ctx.fillRect(0, 0, THUMB_W, THUMB_H);
+
+      // Step 7: Deep blue-purple vignette
+      var vigGrad = ctx.createRadialGradient(
+        THUMB_W / 2, THUMB_H * 0.48, THUMB_W * 0.22,
+        THUMB_W / 2, THUMB_H * 0.48, THUMB_W * 0.72
+      );
+      vigGrad.addColorStop(0, "rgba(10, 8, 35, 0)");
+      vigGrad.addColorStop(0.5, "rgba(10, 8, 35, 0.30)");
+      vigGrad.addColorStop(1, "rgba(6, 4, 25, 0.55)");
       ctx.fillStyle = vigGrad;
       ctx.fillRect(0, 0, THUMB_W, THUMB_H);
 
