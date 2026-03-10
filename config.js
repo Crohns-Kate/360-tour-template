@@ -19,11 +19,6 @@
 
 const TOUR_CONFIG = {
 
-  // ── METAREAL 3D TOUR (optional) ──────────────────────────────
-  // Paste your Metareal published tour URL here.
-  // Leave as empty string "" to use the Pannellum viewer instead.
-  metarealUrl: "",
-
   // ── PROPERTY DETAILS ────────────────────────────────────────
   propertyTitle:    "Arjan Villa",           // Displayed in the top-left badge
   propertySubtitle: "Padonan",               // Shown beneath badge

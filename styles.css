@@ -326,22 +326,87 @@ html, body {
   white-space: nowrap !important;
 }
 
-/* ── Metareal iframe container ────────────────────────────── */
-#metareal-container {
-  width: 100%;
-  height: 70vh;
-  min-height: 380px;
-  max-height: 760px;
-  border-radius: var(--radius-card);
-  overflow: hidden;
-  background: var(--charcoal);
+/* ── Dusk effect overlay ──────────────────────────────────── */
+#dusk-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.6s ease;
 }
 
-#metareal-container iframe {
-  display: block;
-  width: 100%;
-  height: 100%;
-  border: none;
+#dusk-overlay.dusk-active {
+  opacity: 1;
+}
+
+.dusk-sky {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 40%;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 17, 40, 0.62) 0%,
+    rgba(25, 30, 65, 0.40) 40%,
+    rgba(45, 40, 80, 0.18) 70%,
+    transparent 100%
+  );
+}
+
+.dusk-warmth {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 30%;
+  background: linear-gradient(
+    0deg,
+    rgba(200, 150, 60, 0.22) 0%,
+    rgba(220, 170, 80, 0.12) 40%,
+    transparent 100%
+  );
+}
+
+.dusk-vignette {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 70% 60% at 50% 50%,
+    transparent 40%,
+    rgba(20, 15, 45, 0.35) 100%
+  );
+}
+
+/* CSS filter on the viewer when dusk is active */
+#viewer-card.dusk-filter-active #panorama-viewer {
+  filter: contrast(1.12) saturate(1.18) brightness(0.88);
+}
+
+/* Dusk button active state */
+.ctrl-btn#btn-dusk.active {
+  background: rgba(100, 80, 180, 0.55);
+  border-color: rgba(150, 130, 220, 0.4);
+}
+
+/* ── Tools link ──────────────────────────────────────────── */
+.tools-link {
+  margin-top: 18px;
+  text-align: center;
+  font-size: 12px;
+}
+
+.tools-link a {
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 0.05em;
+  transition: color var(--transition);
+}
+
+.tools-link a:hover {
+  color: var(--gold-light);
+  text-decoration: underline;
 }
 
 /* ── Fullscreen adjustments ───────────────────────────────── */
@@ -356,11 +421,6 @@ html, body {
   .page-wrapper { padding: 24px 14px 40px; }
 
   #panorama-viewer {
-    height: 55vw;
-    min-height: 260px;
-  }
-
-  #metareal-container {
     height: 55vw;
     min-height: 260px;
   }

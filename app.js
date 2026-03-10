@@ -169,6 +169,23 @@
     });
   }
 
+  // ── Dusk effect toggle ───────────────────────────────────────
+  function initDuskToggle() {
+    var duskOverlay = document.getElementById("dusk-overlay");
+    var duskBtn     = document.getElementById("btn-dusk");
+    var viewerCard  = document.getElementById("viewer-card");
+
+    // Default: dusk ON
+    duskBtn.classList.add("active");
+    viewerCard.classList.add("dusk-filter-active");
+
+    duskBtn.addEventListener("click", function () {
+      var isActive = duskOverlay.classList.toggle("dusk-active");
+      duskBtn.classList.toggle("active", isActive);
+      viewerCard.classList.toggle("dusk-filter-active", isActive);
+    });
+  }
+
   // ── Entry point ──────────────────────────────────────────────
   function init() {
     $viewer      = document.getElementById("panorama-viewer");
@@ -179,37 +196,9 @@
     $loadMsg     = document.getElementById("load-msg");
 
     applyBranding();
-
-    // ── Metareal iframe mode vs Pannellum fallback ──────────
-    if (TOUR_CONFIG.metarealUrl && TOUR_CONFIG.metarealUrl.trim() !== "") {
-      var metarealContainer = document.getElementById("metareal-container");
-      var metarealFrame     = document.getElementById("metareal-frame");
-      var caption           = document.querySelector(".viewer-caption");
-
-      metarealFrame.src              = TOUR_CONFIG.metarealUrl;
-      metarealContainer.style.display = "block";
-      $viewer.style.display          = "none";
-      $loadOverlay.style.display     = "none";
-      $sceneNav.style.display        = "none";
-
-      // Hide Pannellum-specific overlays inside viewer-card
-      var badge    = document.querySelector(".viewer-badge");
-      var controls = document.querySelector(".viewer-controls");
-      if (badge)    badge.style.display    = "none";
-      if (controls) controls.style.display = "none";
-
-      if (caption) {
-        caption.innerHTML =
-          '<span class="caption-icon">\u2726</span>' +
-          "Click to explore \u00b7 Use arrows to move between rooms \u00b7 Fullscreen recommended";
-      }
-      return; // Skip Pannellum init
-    }
-
-    // ── Pannellum mode (default) ────────────────────────────
-    document.getElementById("metareal-container").style.display = "none";
     buildSceneNav();
     bindControls();
+    initDuskToggle();
     initViewer();
   }
 

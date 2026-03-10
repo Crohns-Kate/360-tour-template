@@ -34,22 +34,15 @@
       <!-- ── Viewer card ─────────────────────────────────── -->
       <div id="viewer-card">
 
-        <!-- Metareal 3D tour (shown when metarealUrl is set) -->
-        <div id="metareal-container" style="display:none;">
-          <iframe
-            id="metareal-frame"
-            src=""
-            width="100%"
-            height="100%"
-            frameborder="0"
-            allowfullscreen
-            allow="xr-spatial-tracking"
-            title="3D Virtual Tour">
-          </iframe>
-        </div>
-
         <!-- 360 panorama viewport -->
         <div id="panorama-viewer"></div>
+
+        <!-- Dusk effect overlay (layered above panorama, below controls) -->
+        <div id="dusk-overlay" class="dusk-active">
+          <div class="dusk-sky"></div>
+          <div class="dusk-warmth"></div>
+          <div class="dusk-vignette"></div>
+        </div>
 
         <!-- Top-left badge overlay -->
         <div class="viewer-badge" aria-hidden="true">
@@ -67,6 +60,9 @@
           </button>
           <button class="ctrl-btn" id="btn-zoom-out" title="Zoom out" aria-label="Zoom out">
             <span class="icon">−</span>
+          </button>
+          <button class="ctrl-btn active" id="btn-dusk" title="Toggle dusk effect" aria-label="Toggle dusk effect">
+            <span class="icon">☾</span>
           </button>
         </div>
 
@@ -86,6 +82,11 @@
 
       <!-- ── Scene selector ──────────────────────────────── -->
       <nav id="scene-nav" aria-label="Scene navigation"></nav>
+
+      <!-- ── Tools link ───────────────────────────────────── -->
+      <p class="tools-link">
+        <a href="thumbnail-processor.html">Process Thumbnails</a>
+      </p>
 
     </div><!-- /tour-container -->
   </div><!-- /page-wrapper -->
