@@ -10,9 +10,17 @@
   // ── State ────────────────────────────────────────────────────
   let viewer        = null;
   let currentSceneId = null;
+  let isDusk         = true; // tracks current day/dusk mode
 
   // ── DOM refs (populated in init) ────────────────────────────
   let $viewer, $sceneNav, $badge, $subtitle, $caption, $loadOverlay, $loadMsg;
+
+  // ── Resolve panorama path for current mode ───────────────────
+  function getPanorama(scene) {
+    if (isDusk && scene.panoramaDusk) return scene.panoramaDusk;
+    if (!isDusk && scene.panoramaDay) return scene.panoramaDay;
+    return scene.panorama; // fallback
+  }
 
   // ── Build Pannellum scene map from config ────────────────────
   function buildScenes() {
@@ -33,7 +41,7 @@
 
       scenes[s.id] = {
         title:      s.title,
-        panorama:   s.panorama,
+        panorama:   getPanorama(s),
         yaw:        s.yaw   || 0,
         pitch:      s.pitch || 0,
         hfov:       s.hfov  || 100,
@@ -169,20 +177,35 @@
     });
   }
 
-  // ── Dusk effect toggle ───────────────────────────────────────
+  // ── Day / Dusk toggle — swaps actual panorama images ─────────
   function initDuskToggle() {
-    var duskOverlay = document.getElementById("dusk-overlay");
-    var duskBtn     = document.getElementById("btn-dusk");
-    var viewerCard  = document.getElementById("viewer-card");
-
-    // Default: dusk ON
-    duskBtn.classList.add("active");
-    viewerCard.classList.add("dusk-filter-active");
+    var duskBtn = document.getElementById("btn-dusk");
+    isDusk = (TOUR_CONFIG.defaultMode || "dusk") === "dusk";
+    duskBtn.classList.toggle("active", isDusk);
 
     duskBtn.addEventListener("click", function () {
-      var isActive = duskOverlay.classList.toggle("dusk-active");
-      duskBtn.classList.toggle("active", isActive);
-      viewerCard.classList.toggle("dusk-filter-active", isActive);
+      if (!viewer) return;
+
+      // Flip mode
+      isDusk = !isDusk;
+      duskBtn.classList.toggle("active", isDusk);
+
+      // Remember current camera position
+      var yaw   = viewer.getYaw();
+      var pitch  = viewer.getPitch();
+      var hfov   = viewer.getHfov();
+
+      // Destroy and rebuild viewer with new panorama paths
+      viewer.destroy();
+      viewer = null;
+      initViewer();
+
+      // Restore camera position once loaded
+      viewer.on("load", function () {
+        viewer.setYaw(yaw, false);
+        viewer.setPitch(pitch, false);
+        viewer.setHfov(hfov, false);
+      });
     });
   }
 

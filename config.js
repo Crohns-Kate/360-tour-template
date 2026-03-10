@@ -27,6 +27,11 @@ const TOUR_CONFIG = {
   // Must match one of the scene `id` values below
   defaultSceneId: "living",
 
+  // ── DAY / DUSK MODE ─────────────────────────────────────────
+  // Default view when the tour loads. Toggle button switches between them.
+  // "dusk" = AI-rendered dusk panoramas, "day" = original daytime panoramas
+  defaultMode: "dusk",
+
   // ── GLOBAL AUTOROTATE ───────────────────────────────────────
   // Speed in degrees/second. Positive = clockwise. Set 0 to disable.
   autoRotateSpeed: 1.2,
@@ -40,8 +45,10 @@ const TOUR_CONFIG = {
       title:     "Front View",           // Shown in the scene selector
       thumbnail: "./images/thumb-1.jpg", // Small preview image (optional)
 
-      // ── REPLACE THIS PATH with your equirectangular panorama ──
-      panorama:  "./images/scene-1.jpg",
+      // Day = original photo, Dusk = AI-rendered version
+      panorama:     "./images/scene-1-dusk.jpg",
+      panoramaDay:  "./images/scene-1-day.jpg",
+      panoramaDusk: "./images/scene-1-dusk.jpg",
 
       // Starting camera angle when this scene loads
       yaw:   0,     // Horizontal angle in degrees  (-180 to 180)
