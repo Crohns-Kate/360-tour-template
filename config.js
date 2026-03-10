@@ -20,8 +20,8 @@
 const TOUR_CONFIG = {
 
   // ── PROPERTY DETAILS ────────────────────────────────────────
-  propertyTitle:    "Villa Oceana",          // Displayed in the top-left badge
-  propertySubtitle: "Luxury Beachfront Residence · Noosa, QLD", // Shown beneath badge
+  propertyTitle:    "Arjan Villa",           // Displayed in the top-left badge
+  propertySubtitle: "Padonan",               // Shown beneath badge
 
   // ── DEFAULT SCENE ───────────────────────────────────────────
   // Must match one of the scene `id` values below
@@ -37,7 +37,7 @@ const TOUR_CONFIG = {
   scenes: [
     {
       id:        "living",               // Unique ID (used by hotspots)
-      title:     "Living & Dining Area", // Shown in the scene selector
+      title:     "Front View",           // Shown in the scene selector
       thumbnail: "./images/thumb-1.jpg", // Small preview image (optional)
 
       // ── REPLACE THIS PATH with your equirectangular panorama ──
