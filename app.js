@@ -69,7 +69,9 @@
         mouseZoom:       true,
         draggable:       true,
         disableKeyboardCtrl: false,
-        hotSpotDebug:    false
+        hotSpotDebug:    false,
+        minHfov:         60,       // Limit zoom-in to prevent blur on upscaled images
+        maxHfov:         120       // Limit zoom-out
       },
       scenes: pannellumScenes
     });
