@@ -138,8 +138,122 @@ const TOUR_CONFIG = {
       panoramaDusk: "./images/scene-7-dusk.jpg",
       yaw: 0, pitch: 0, hfov: 100,
       hotspots: [
-        { pitch: -5,  yaw: 160,  targetSceneId: "living",  text: "Living & Dining" },
-        { pitch: -5,  yaw: -90,  targetSceneId: "kitchen", text: "Kitchen" }
+        { pitch: -5,  yaw: 160,  targetSceneId: "living",     text: "Living & Dining" },
+        { pitch: -5,  yaw: -90,  targetSceneId: "kitchen",   text: "Kitchen" },
+        { pitch: -5,  yaw: -30,  targetSceneId: "bedroom",   text: "Bedroom" },
+        { pitch: -5,  yaw: 60,   targetSceneId: "bathroom2", text: "Bathroom 2" },
+        { pitch: 15,  yaw: 0,    targetSceneId: "landing",   text: "Upstairs" }
+      ]
+    },
+
+    // ── Scene 8: Bedroom (ground floor, interior) ──────────
+    {
+      id:           "bedroom",
+      title:        "Bedroom",
+      panorama:     "./images/scene-8-dusk.jpg",
+      panoramaDay:  "./images/scene-8-day.jpg",
+      panoramaDusk: "./images/scene-8-dusk.jpg",
+      yaw: 0, pitch: 0, hfov: 100,
+      hotspots: [
+        { pitch: -5,  yaw: 160,  targetSceneId: "hallway",   text: "Hallway" },
+        { pitch: -8,  yaw: -60,  targetSceneId: "bathroom1", text: "Bathroom" }
+      ]
+    },
+
+    // ── Scene 9: Bathroom (ground floor, interior) ─────────
+    {
+      id:           "bathroom1",
+      title:        "Bathroom",
+      panorama:     "./images/scene-9-dusk.jpg",
+      panoramaDay:  "./images/scene-9-day.jpg",
+      panoramaDusk: "./images/scene-9-dusk.jpg",
+      yaw: 0, pitch: 0, hfov: 100,
+      hotspots: [
+        { pitch: -5,  yaw: 160,  targetSceneId: "bedroom",  text: "Bedroom" }
+      ]
+    },
+
+    // ── Scene 10: Bathroom 2 (ground floor, interior) ──────
+    {
+      id:           "bathroom2",
+      title:        "Bathroom 2",
+      panorama:     "./images/scene-10-dusk.jpg",
+      panoramaDay:  "./images/scene-10-day.jpg",
+      panoramaDusk: "./images/scene-10-dusk.jpg",
+      yaw: 0, pitch: 0, hfov: 100,
+      hotspots: [
+        { pitch: -5,  yaw: 160,  targetSceneId: "hallway",  text: "Hallway" }
+      ]
+    },
+
+    // ── Scene 11: Upstairs Hallway (interior) ──────────────
+    {
+      id:           "upstairs-hallway",
+      title:        "Upstairs Hallway",
+      panorama:     "./images/scene-11-dusk.jpg",
+      panoramaDay:  "./images/scene-11-day.jpg",
+      panoramaDusk: "./images/scene-11-dusk.jpg",
+      yaw: 0, pitch: 0, hfov: 100,
+      hotspots: [
+        { pitch: -5,  yaw: 160,  targetSceneId: "landing",         text: "Landing" },
+        { pitch: -5,  yaw: -60,  targetSceneId: "master-bedroom",  text: "Master Bedroom" },
+        { pitch: -5,  yaw: 60,   targetSceneId: "upstairs-bedroom", text: "Upstairs Bedroom" }
+      ]
+    },
+
+    // ── Scene 12: Master Bedroom (upstairs, interior) ──────
+    {
+      id:           "master-bedroom",
+      title:        "Master Bedroom",
+      panorama:     "./images/scene-12-dusk.jpg",
+      panoramaDay:  "./images/scene-12-day.jpg",
+      panoramaDusk: "./images/scene-12-dusk.jpg",
+      yaw: 0, pitch: 0, hfov: 100,
+      hotspots: [
+        { pitch: -5,  yaw: 160,  targetSceneId: "upstairs-hallway",   text: "Upstairs Hallway" },
+        { pitch: -8,  yaw: -60,  targetSceneId: "upstairs-bathroom",  text: "Upstairs Bathroom" }
+      ]
+    },
+
+    // ── Scene 13: Upstairs Landing (interior) ──────────────
+    {
+      id:           "landing",
+      title:        "Upstairs Landing",
+      panorama:     "./images/scene-13-dusk.jpg",
+      panoramaDay:  "./images/scene-13-day.jpg",
+      panoramaDusk: "./images/scene-13-dusk.jpg",
+      yaw: 0, pitch: 0, hfov: 100,
+      hotspots: [
+        { pitch: -15, yaw: 160,  targetSceneId: "hallway",          text: "Downstairs" },
+        { pitch: -5,  yaw: -60,  targetSceneId: "upstairs-hallway", text: "Upstairs Hallway" },
+        { pitch: -5,  yaw: 60,   targetSceneId: "master-bedroom",   text: "Master Bedroom" }
+      ]
+    },
+
+    // ── Scene 14: Upstairs Bathroom (interior) ─────────────
+    {
+      id:           "upstairs-bathroom",
+      title:        "Upstairs Bathroom",
+      panorama:     "./images/scene-14-dusk.jpg",
+      panoramaDay:  "./images/scene-14-day.jpg",
+      panoramaDusk: "./images/scene-14-dusk.jpg",
+      yaw: 0, pitch: 0, hfov: 100,
+      hotspots: [
+        { pitch: -5,  yaw: 160,  targetSceneId: "master-bedroom",  text: "Master Bedroom" }
+      ]
+    },
+
+    // ── Scene 15: Upstairs Bedroom (interior) ──────────────
+    {
+      id:           "upstairs-bedroom",
+      title:        "Upstairs Bedroom",
+      panorama:     "./images/scene-15-dusk.jpg",
+      panoramaDay:  "./images/scene-15-day.jpg",
+      panoramaDusk: "./images/scene-15-dusk.jpg",
+      yaw: 0, pitch: 0, hfov: 100,
+      hotspots: [
+        { pitch: -5,  yaw: 160,  targetSceneId: "upstairs-hallway", text: "Upstairs Hallway" },
+        { pitch: -5,  yaw: -60,  targetSceneId: "landing",          text: "Landing" }
       ]
     }
 

@@ -1,1 +1,0 @@
-Drop your equirectangular panorama JPGs here: scene-1.jpg, scene-2.jpg, scene-3.jpg
