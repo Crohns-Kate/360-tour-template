@@ -59,8 +59,9 @@ const TOUR_CONFIG = {
     {
       id:           "pool",
       title:        "Pool Deck",
-      panorama:     "./images/scene-2-day.jpg",
+      panorama:     "./images/scene-2-dusk.jpg",
       panoramaDay:  "./images/scene-2-day.jpg",
+      panoramaDusk: "./images/scene-2-dusk.jpg",
       yaw: 0, pitch: 0, hfov: 105,
       hotspots: [
         { pitch: -8,  yaw: 160,  targetSceneId: "front",   text: "Front View" },
@@ -73,8 +74,9 @@ const TOUR_CONFIG = {
     {
       id:           "garden",
       title:        "Garden",
-      panorama:     "./images/scene-3-day.jpg",
+      panorama:     "./images/scene-3-dusk.jpg",
       panoramaDay:  "./images/scene-3-day.jpg",
+      panoramaDusk: "./images/scene-3-dusk.jpg",
       yaw: 0, pitch: 0, hfov: 105,
       hotspots: [
         { pitch: -10, yaw: -60,  targetSceneId: "pool",    text: "Pool Deck" },
@@ -86,8 +88,9 @@ const TOUR_CONFIG = {
     {
       id:           "living",
       title:        "Living & Dining",
-      panorama:     "./images/scene-4-day.jpg",
+      panorama:     "./images/scene-4-dusk.jpg",
       panoramaDay:  "./images/scene-4-day.jpg",
+      panoramaDusk: "./images/scene-4-dusk.jpg",
       yaw: 90, pitch: 0, hfov: 100,
       hotspots: [
         { pitch: -5,  yaw: -160, targetSceneId: "front",   text: "Front Door" },
@@ -101,8 +104,9 @@ const TOUR_CONFIG = {
     {
       id:           "lounge",
       title:        "Lounge",
-      panorama:     "./images/scene-5-day.jpg",
+      panorama:     "./images/scene-5-dusk.jpg",
       panoramaDay:  "./images/scene-5-day.jpg",
+      panoramaDusk: "./images/scene-5-dusk.jpg",
       yaw: 0, pitch: 0, hfov: 100,
       hotspots: [
         { pitch: -8,  yaw: -80,  targetSceneId: "living",  text: "Living & Dining" },
@@ -115,8 +119,9 @@ const TOUR_CONFIG = {
     {
       id:           "kitchen",
       title:        "Kitchen",
-      panorama:     "./images/scene-6-day.jpg",
+      panorama:     "./images/scene-6-dusk.jpg",
       panoramaDay:  "./images/scene-6-day.jpg",
+      panoramaDusk: "./images/scene-6-dusk.jpg",
       yaw: 90, pitch: 0, hfov: 100,
       hotspots: [
         { pitch: -5,  yaw: -90,  targetSceneId: "living",  text: "Living & Dining" },
@@ -128,8 +133,9 @@ const TOUR_CONFIG = {
     {
       id:           "hallway",
       title:        "Hallway & Stairs",
-      panorama:     "./images/scene-7-day.jpg",
+      panorama:     "./images/scene-7-dusk.jpg",
       panoramaDay:  "./images/scene-7-day.jpg",
+      panoramaDusk: "./images/scene-7-dusk.jpg",
       yaw: 0, pitch: 0, hfov: 100,
       hotspots: [
         { pitch: -5,  yaw: 160,  targetSceneId: "living",  text: "Living & Dining" },
