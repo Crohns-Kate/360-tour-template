@@ -126,6 +126,31 @@
     body.dusk-mode .nav-link { background: #141e2b; border-color: #1e2a3a; color: #b08d57; }
     body.dusk-mode .toggle-btn { background: #141e2b; border-color: #1e2a3a; color: #e0ddd8; }
 
+    /* ── Location Highlights ────────────────── */
+    .location-highlights {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .highlight-item {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 8px 18px;
+      font-size: 14px;
+      white-space: nowrap;
+    }
+    body.dusk-mode .highlight-item { background: #141e2b; border-color: #1e2a3a; }
+    .location-description {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
+      max-width: 900px;
+      margin-bottom: 32px;
+    }
+    body.dusk-mode .location-description { color: #8a9ab5; }
+
     /* ── Villa Details Cards ───────────────── */
     .villa-overview {
       display: grid;
@@ -329,6 +354,15 @@
         </button>
       </div>
     </header>
+
+    <!-- ── Location Highlights ─────────────── -->
+    <div class="location-highlights">
+      <div class="highlight-item">🏖️ <strong>14 min</strong> to beach by motorbike</div>
+      <div class="highlight-item">🎓 Minutes from <strong>international school</strong></div>
+      <div class="highlight-item">🌴 Growing hotspot for <strong>expats &amp; families</strong></div>
+      <div class="highlight-item">🧘 Away from the chaos of the <strong>tourist hub</strong></div>
+    </div>
+    <p class="location-description">North Canggu is quickly becoming one of Bali's most sought-after residential areas — a peaceful escape from the congestion of central Canggu and Seminyak, while still minutes from the beach, schools, cafes and everything you need. Ideal for families and long-term expats looking for quality of life without compromise.</p>
 
     <!-- ── Villa Specs ─────────────────────── -->
     <div class="villa-overview">
