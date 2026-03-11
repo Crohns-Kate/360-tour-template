@@ -3,7 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>North Canggu Villas — Luxury Leasehold</title>
+  <title>North Canggu Villas — 3 Luxury Leasehold Villas from US$170K | Bali</title>
+  <meta name="description" content="3 brand-new luxury leasehold villas in North Canggu, Bali. 3 bed, 3 bath, private pool. 28 year lease from US$170,000. SLF/PBG complete. Contact Arjan today." />
+
+  <!-- Open Graph for Facebook Ads -->
+  <meta property="og:title" content="North Canggu Villas — Luxury Leasehold from US$170K" />
+  <meta property="og:description" content="3 brand-new villas in Bali's fastest-growing expat area. 3 bed, 3 bath, private pool. 28yr lease. SLF/PBG complete." />
+  <meta property="og:image" content="https://crohns-kate.github.io/360-tour-template/images/canggu-villas/photo-1-dusk.jpeg" />
+  <meta property="og:url" content="https://crohns-kate.github.io/360-tour-template/canggu-villas.html" />
+  <meta property="og:type" content="website" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -413,11 +421,128 @@
     }
     body.dusk-mode .page-footer { border-top-color: #1e2a3a; }
 
+    /* ── Contact Section ─────────────────── */
+    .contact-section {
+      text-align: center;
+      padding: 48px 0 32px;
+      margin-top: 20px;
+      border-top: 1px solid var(--border);
+    }
+    body.dusk-mode .contact-section { border-top-color: #1e2a3a; }
+    .contact-heading {
+      font-family: var(--font-display);
+      font-size: clamp(28px, 4vw, 38px);
+      font-weight: 300;
+      margin-bottom: 8px;
+    }
+    .contact-subheading {
+      color: var(--muted);
+      font-size: 15px;
+      margin-bottom: 28px;
+    }
+    body.dusk-mode .contact-subheading { color: #8a9ab5; }
+    .contact-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+    .contact-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      padding: 24px 32px;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: all 0.3s;
+      min-width: 220px;
+    }
+    .contact-whatsapp {
+      background: #075e54;
+      color: #fff;
+    }
+    .contact-whatsapp:hover { background: #128c7e; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(7, 94, 84, 0.4); }
+    .contact-phone {
+      background: var(--navy);
+      color: #fff;
+      border: 1px solid #1e2a3a;
+    }
+    .contact-phone:hover { background: #1a2d45; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(15, 27, 45, 0.4); }
+    .contact-email {
+      background: var(--surface);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    body.dusk-mode .contact-email { background: #141e2b; border-color: #1e2a3a; color: #e0ddd8; }
+    .contact-email:hover { border-color: var(--accent); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(176, 141, 87, 0.2); }
+    .contact-icon { font-size: 28px; }
+    .contact-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      font-weight: 600;
+      opacity: 0.8;
+    }
+    .contact-value {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    /* ── Sticky Bottom CTA Bar ───────────── */
+    .sticky-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      z-index: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      padding: 12px 20px;
+      background: rgba(15, 27, 45, 0.95);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid rgba(176, 141, 87, 0.3);
+      color: #fff;
+    }
+    .sticky-cta-text {
+      font-size: 14px;
+      white-space: nowrap;
+    }
+    .sticky-cta-text strong { color: var(--accent); }
+    .sticky-cta-buttons { display: flex; gap: 8px; }
+    .sticky-btn {
+      padding: 10px 20px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .sticky-btn-wa {
+      background: #25d366;
+      color: #fff;
+    }
+    .sticky-btn-wa:hover { background: #20bd5a; }
+    .sticky-btn-enquire {
+      background: var(--accent);
+      color: #fff;
+    }
+    .sticky-btn-enquire:hover { background: #c49d62; }
+
+    /* Bottom padding for sticky bar */
+    body { padding-bottom: 70px; }
+
     @media (max-width: 600px) {
       .page-wrapper { padding: 12px; }
       .gallery-grid { grid-template-columns: 1fr; }
       .villa-card img { height: 220px; }
       .villa-overview { grid-template-columns: 1fr; }
+      .sticky-cta { flex-direction: column; gap: 6px; padding: 10px 16px; }
+      .sticky-cta-text { font-size: 13px; }
+      .contact-card { min-width: 100%; }
     }
   </style>
 </head>
@@ -531,9 +656,43 @@
       <div class="gallery-grid" id="gallery-bathrooms"></div>
     </section>
 
+    <!-- ── Contact / Enquiry Section ────────── -->
+    <section class="contact-section" id="enquire">
+      <h2 class="contact-heading">Enquire Now</h2>
+      <p class="contact-subheading">Speak directly with Arjan for pricing, availability, and site visits</p>
+      <div class="contact-cards">
+        <a href="https://wa.me/6288103882096" target="_blank" rel="noopener" class="contact-card contact-whatsapp">
+          <span class="contact-icon">💬</span>
+          <span class="contact-label">WhatsApp</span>
+          <span class="contact-value">+62 881-0388-20967</span>
+        </a>
+        <a href="tel:+61401687714" class="contact-card contact-phone">
+          <span class="contact-icon">📞</span>
+          <span class="contact-label">Call (AU)</span>
+          <span class="contact-value">+61 401 687 714</span>
+        </a>
+        <a href="mailto:arjan@insituasia.com" class="contact-card contact-email">
+          <span class="contact-icon">✉️</span>
+          <span class="contact-label">Email</span>
+          <span class="contact-value">arjan@insituasia.com</span>
+        </a>
+      </div>
+    </section>
+
     <footer class="page-footer">
-      <a href="https://maps.google.com/?q=Villa+Nera+Canggu+Bali" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">📍 North Canggu, Bali</a> &mdash; All photos rendered with AI day-to-dusk effect
+      <a href="https://maps.google.com/?q=Villa+Nera+Canggu+Bali" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none">📍 North Canggu, Bali</a> &mdash; In Situ Asia
     </footer>
+  </div>
+
+  <!-- ── Sticky Bottom CTA (FB ads landing) ── -->
+  <div class="sticky-cta">
+    <div class="sticky-cta-text">
+      <strong>From US $170,000</strong> · 28 Year Lease
+    </div>
+    <div class="sticky-cta-buttons">
+      <a href="https://wa.me/6288103882096" target="_blank" rel="noopener" class="sticky-btn sticky-btn-wa">WhatsApp</a>
+      <a href="#enquire" class="sticky-btn sticky-btn-enquire">Enquire</a>
+    </div>
   </div>
 
   <!-- ── Lightbox ────────────────────────── -->
