@@ -71,11 +71,31 @@
     .download-btn { display: inline-block; margin-top: 12px; margin-left: 8px; padding: 8px 20px; background: var(--accent); color: #fff; text-decoration: none; border-radius: 6px; font-size: 13px; font-weight: 500; transition: background 0.2s; }
     .download-btn:hover { background: #c49d62; }
 
+    /* Video Ads Section */
+    .video-section-header { text-align: center; margin: 60px 0 40px; padding-top: 40px; border-top: 2px solid var(--accent); }
+    .video-section-header h2 { font-family: var(--font-display); font-size: 34px; font-weight: 300; margin-bottom: 8px; }
+    .video-section-header p { color: var(--muted); font-size: 14px; }
+    .video-formats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 20px 0; }
+    .video-formats .format-card { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; text-align: center; }
+    .video-formats .format-card video { width: 100%; display: block; }
+    .video-formats .format-card .format-label { padding: 10px; font-size: 12px; color: var(--muted); }
+    .video-formats .format-card .format-label strong { color: var(--accent); }
+    .download-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .download-links a { padding: 6px 14px; background: var(--bg); border: 1px solid var(--border); color: var(--muted); text-decoration: none; border-radius: 6px; font-size: 12px; transition: all 0.2s; }
+    .download-links a:hover { border-color: var(--accent); color: var(--accent); }
+    .caption-timeline { margin-top: 16px; }
+    .caption-timeline table { width: 100%; border-collapse: collapse; font-size: 12px; }
+    .caption-timeline th { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--accent); color: var(--accent); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
+    .caption-timeline td { padding: 6px 10px; border-bottom: 1px solid var(--border); color: var(--muted); }
+    .caption-timeline td:first-child { color: var(--text); font-weight: 500; white-space: nowrap; }
+
     @media (max-width: 600px) {
       .wrapper { padding: 16px 12px; }
       .research-summary { padding: 20px; }
       .launch-table { font-size: 11px; }
       .launch-table th, .launch-table td { padding: 6px 8px; }
+      .video-formats { grid-template-columns: 1fr; }
+      .video-formats .format-card video { max-height: 400px; object-fit: contain; background: #000; }
     }
   </style>
 </head>
@@ -84,7 +104,7 @@
 
     <header class="page-header">
       <h1>North Canggu Villas — Ad Campaign</h1>
-      <p>7 Research-Informed Creatives + Strategy Report</p>
+      <p>7 Static Creatives + 3 Video Ads (9 formats) + Strategy Report</p>
       <a class="back-link" href="../canggu-villas.html">View Landing Page</a>
       &nbsp;
       <a class="back-link" href="research-report.md">Full Research Report</a>
@@ -388,35 +408,220 @@
       </div>
     </div>
 
-    <!-- ═══════════ VIDEO RECOMMENDATIONS ═══════════ -->
+    <!-- ═══════════ VIDEO ADS ═══════════ -->
+    <div class="video-section-header">
+      <h2>Video Ads</h2>
+      <p>3 AI-generated videos x 3 formats = 9 assets ready for Facebook & Instagram</p>
+      <p style="margin-top:8px;"><span style="color:var(--green);font-weight:600;">Video generates 403% more enquiries than static images</span> &mdash; 16 seconds, the research sweet spot</p>
+    </div>
+
+    <!-- ═══════════ VIDEO AD 1: COMPARISON ═══════════ -->
+    <div class="ad-block">
+      <div class="video-formats">
+        <div class="format-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="video-ad-comparison.mp4" type="video/mp4" />
+          </video>
+          <div class="format-label"><strong>16:9 Landscape</strong><br>In-stream / Feed</div>
+        </div>
+        <div class="format-card">
+          <video controls muted playsinline preload="metadata" style="max-height:360px;">
+            <source src="video-ad-comparison-vertical.mp4" type="video/mp4" />
+          </video>
+          <div class="format-label"><strong>9:16 Vertical</strong><br>Reels / Stories</div>
+        </div>
+        <div class="format-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="video-ad-comparison-square.mp4" type="video/mp4" />
+          </video>
+          <div class="format-label"><strong>1:1 Square</strong><br>Feed</div>
+        </div>
+      </div>
+      <div class="ad-info">
+        <div class="ad-top">
+          <div class="ad-number">Video 01 — Priority #1</div>
+          <span class="ad-priority priority-1">Launch Week 1</span>
+        </div>
+        <div class="ad-name">Australia vs Bali Price Comparison</div>
+        <div class="ad-meta">
+          <span>~16 sec</span><span>3 formats</span><span>Cold Traffic</span><span>Broad AU 25-55</span>
+        </div>
+
+        <div class="caption-timeline">
+          <h4 style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Caption Timeline</h4>
+          <table>
+            <tr><th>Time</th><th>Section</th><th>Captions</th></tr>
+            <tr><td>0.3s &ndash; 7.5s</td><td>Sydney</td><td>"Same price. Different life." (top) + "$175,000 &mdash; Sydney" + "1 bed. No pool. No garden."</td></tr>
+            <tr><td>8.2s &ndash; 13.5s</td><td>Bali</td><td>"Same price. Different life." (top) + "$175,000 &mdash; Bali" + "3 bed. 3 bath. Private pool. North Canggu."</td></tr>
+            <tr><td>14s &ndash; 16s</td><td>End Card</td><td>"Same price. Different life." + "3 villas from $170,000" + "North Canggu, Bali"</td></tr>
+          </table>
+        </div>
+
+        <div class="ad-copy" style="margin-top:16px;">
+          <h4>Suggested Ad Copy</h4>
+          <div class="copy-label">Primary Text</div>
+          <p class="copy-text">This is what $175,000 buys you in Sydney right now. One bedroom. No pool. Grey walls. Grey sky.<br><br>The same money in North Canggu, Bali? A brand-new 3 bedroom villa. 3 bathrooms. Private pool. Tropical gardens. 28 year lease. Fully SBG and SLF licensed.<br><br>Only 3 available.</p>
+          <div class="copy-label">Headline</div>
+          <p class="copy-text headline">Same Price. Completely Different Life.</p>
+          <div class="copy-label">CTA</div>
+          <p class="copy-text">Learn More</p>
+        </div>
+        <div class="download-links">
+          <a href="video-ad-comparison.mp4" download>16:9 Landscape</a>
+          <a href="video-ad-comparison-vertical.mp4" download>9:16 Vertical</a>
+          <a href="video-ad-comparison-square.mp4" download>1:1 Square</a>
+        </div>
+        <span class="budget-box">$30-40/day</span>
+      </div>
+    </div>
+
+    <!-- ═══════════ VIDEO AD 2: FIFO ═══════════ -->
+    <div class="ad-block">
+      <div class="video-formats">
+        <div class="format-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="video-ad-fifo.mp4" type="video/mp4" />
+          </video>
+          <div class="format-label"><strong>16:9 Landscape</strong><br>In-stream / Feed</div>
+        </div>
+        <div class="format-card">
+          <video controls muted playsinline preload="metadata" style="max-height:360px;">
+            <source src="video-ad-fifo-vertical.mp4" type="video/mp4" />
+          </video>
+          <div class="format-label"><strong>9:16 Vertical</strong><br>Reels / Stories</div>
+        </div>
+        <div class="format-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="video-ad-fifo-square.mp4" type="video/mp4" />
+          </video>
+          <div class="format-label"><strong>1:1 Square</strong><br>Feed</div>
+        </div>
+      </div>
+      <div class="ad-info">
+        <div class="ad-top">
+          <div class="ad-number">Video 02 — Priority #2</div>
+          <span class="ad-priority priority-1">Launch Week 1</span>
+        </div>
+        <div class="ad-name">FIFO Worker Escape</div>
+        <div class="ad-meta">
+          <span>~16 sec</span><span>3 formats</span><span>Cold Traffic</span><span>FIFO/Mining 30-55, Perth/Darwin/Regional</span>
+        </div>
+
+        <div class="caption-timeline">
+          <h4 style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Caption Timeline</h4>
+          <table>
+            <tr><th>Time</th><th>Section</th><th>Captions</th></tr>
+            <tr><td>0.3s &ndash; 7.5s</td><td>Mine Site</td><td>"Same budget. Different life." (top) + "2 weeks on."</td></tr>
+            <tr><td>8.2s &ndash; 13s</td><td>Villa Life</td><td>"Same budget. Different life." (top) + "2 weeks off." + "What are you doing with your time off?"</td></tr>
+            <tr><td>13.5s &ndash; 16s</td><td>End Card</td><td>"Same budget. Different life." + "3 bed villa from $170,000" + "North Canggu, Bali"</td></tr>
+          </table>
+        </div>
+
+        <div class="ad-copy" style="margin-top:16px;">
+          <h4>Suggested Ad Copy</h4>
+          <div class="copy-label">Primary Text</div>
+          <p class="copy-text">You didn't do all those swings in the dust just to retire in a suburb you can barely afford.<br><br>For the price of a house deposit you'll never pay off &mdash; you could own a 3 bedroom villa with a private pool in Bali. 28 year lease. Fully licensed for Airbnb income.<br><br>Same budget. Completely different life.<br><br>From $170,000. North Canggu &mdash; 14 min to beach, international school nearby, growing expat community.</p>
+          <div class="copy-label">Headline</div>
+          <p class="copy-text headline">Same Budget. Different Life.</p>
+          <div class="copy-label">CTA</div>
+          <p class="copy-text">Learn More</p>
+          <div class="copy-label">Targeting</div>
+          <p class="copy-text">FIFO workers, mining/resources, 30-55, Perth, Darwin, Karratha, Newman, regional WA/QLD/NT</p>
+        </div>
+        <div class="download-links">
+          <a href="video-ad-fifo.mp4" download>16:9 Landscape</a>
+          <a href="video-ad-fifo-vertical.mp4" download>9:16 Vertical</a>
+          <a href="video-ad-fifo-square.mp4" download>1:1 Square</a>
+        </div>
+        <span class="budget-box">$20-30/day</span>
+      </div>
+    </div>
+
+    <!-- ═══════════ VIDEO AD 3: WALKTHROUGH ═══════════ -->
+    <div class="ad-block">
+      <div class="video-formats">
+        <div class="format-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="video-ad-walkthrough.mp4" type="video/mp4" />
+          </video>
+          <div class="format-label"><strong>16:9 Landscape</strong><br>In-stream / Feed</div>
+        </div>
+        <div class="format-card">
+          <video controls muted playsinline preload="metadata" style="max-height:360px;">
+            <source src="video-ad-walkthrough-vertical.mp4" type="video/mp4" />
+          </video>
+          <div class="format-label"><strong>9:16 Vertical</strong><br>Reels / Stories</div>
+        </div>
+        <div class="format-card">
+          <video controls muted playsinline preload="metadata">
+            <source src="video-ad-walkthrough-square.mp4" type="video/mp4" />
+          </video>
+          <div class="format-label"><strong>1:1 Square</strong><br>Feed</div>
+        </div>
+      </div>
+      <div class="ad-info">
+        <div class="ad-top">
+          <div class="ad-number">Video 03 — Priority #3</div>
+          <span class="ad-priority priority-1">Launch Week 1</span>
+        </div>
+        <div class="ad-name">Luxury Villa Walkthrough</div>
+        <div class="ad-meta">
+          <span>~16 sec</span><span>3 formats</span><span>Cold / Warm</span><span>Property Investors, Lifestyle Seekers 28-60</span>
+        </div>
+
+        <div class="caption-timeline">
+          <h4 style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);margin-bottom:10px;">Caption Timeline</h4>
+          <table>
+            <tr><th>Time</th><th>Section</th><th>Captions</th></tr>
+            <tr><td>0.5s &ndash; 6s</td><td>Interior</td><td>"From $170,000 &mdash; North Canggu, Bali" (top)</td></tr>
+            <tr><td>6s &ndash; 13.5s</td><td>Specs Reveal</td><td>"3 bed &middot; 3 bath &middot; Private pool" + "28-year lease &middot; SBG & SLF licensed"</td></tr>
+            <tr><td>14s &ndash; 16s</td><td>End Card</td><td>"Only 3 available." + "From $170,000 &mdash; North Canggu, Bali"</td></tr>
+          </table>
+        </div>
+
+        <div class="ad-copy" style="margin-top:16px;">
+          <h4>Suggested Ad Copy</h4>
+          <div class="copy-label">Primary Text</div>
+          <p class="copy-text">Walk through a brand-new luxury villa in North Canggu, Bali.<br><br>3 bedrooms. 3 bathrooms. Private infinity pool. Tropical gardens. Modern open-plan living.<br><br>28 year lease. Fully SBG and SLF licensed &mdash; legal for Airbnb and Booking.com from day one.<br><br>From $170,000. Only 3 available. 14 minutes to the beach. International school nearby.</p>
+          <div class="copy-label">Headline</div>
+          <p class="copy-text headline">Only 3 Available. From $170,000.</p>
+          <div class="copy-label">CTA</div>
+          <p class="copy-text">Learn More</p>
+        </div>
+        <div class="download-links">
+          <a href="video-ad-walkthrough.mp4" download>16:9 Landscape</a>
+          <a href="video-ad-walkthrough-vertical.mp4" download>9:16 Vertical</a>
+          <a href="video-ad-walkthrough-square.mp4" download>1:1 Square</a>
+        </div>
+        <span class="budget-box">$15-25/day</span>
+      </div>
+    </div>
+
+    <!-- ═══════════ VIDEO BEST PRACTICES ═══════════ -->
     <div class="research-summary" style="margin-top:20px;">
-      <h2>Video Content to Create Next</h2>
-      <p style="margin-bottom:16px;">Research shows video generates <span class="stat">403% more enquiries</span>. Each static creative above should have a video companion.</p>
+      <h2>Video Ad Best Practices</h2>
 
-      <h3>Priority 1 — UGC Villa Walkthrough (15-30 sec)</h3>
-      <p>Film an Australian walking through the villa, talking to camera. "I can't believe this is what $170K gets you in Bali." Raw, phone-shot, authentic. <span class="stat">This is your highest-converting cold traffic asset.</span></p>
+      <h3>Platform Placement Guide</h3>
+      <table class="launch-table">
+        <tr><th>Format</th><th>Placement</th><th>Best For</th><th>File</th></tr>
+        <tr><td><strong>9:16 Vertical</strong></td><td>IG Reels, FB/IG Stories</td><td>Highest engagement, mobile-first</td><td>*-vertical.mp4</td></tr>
+        <tr><td><strong>1:1 Square</strong></td><td>FB Feed, IG Feed</td><td>Maximum screen real estate in feed</td><td>*-square.mp4</td></tr>
+        <tr><td><strong>16:9 Landscape</strong></td><td>FB In-stream, YouTube</td><td>Desktop viewers, pre-roll</td><td>*.mp4</td></tr>
+      </table>
 
-      <h3>Priority 2 — Split-Screen Price Comparison (10-15 sec)</h3>
-      <p>Animated text showing what the same money buys in Sydney vs Bali. Fast-paced, bold typography, jaw-drop reveal. Works for Facebook and Instagram Reels.</p>
-
-      <h3>Priority 3 — March 31 Regulation Explainer (15-30 sec)</h3>
-      <p>"March 31 changes everything for Bali villa investors." Talking head, slightly urgent. News-style delivery but casual setting. Time-sensitive hook.</p>
-
-      <h3>Priority 4 — Day-in-the-Life Lifestyle (20-30 sec)</h3>
-      <p>Wake up in villa, breakfast by pool, work on laptop, sunset drinks. Captions and music. Aspirational but authentic-feeling.</p>
-
-      <h3>Priority 5 — Testimonial Clip (15-20 sec)</h3>
-      <p>An actual Australian investor: "I was skeptical about Bali but..." format. Most powerful social proof asset you can create.</p>
-
-      <h3>Key Rules for Video</h3>
+      <h3>Key Rules</h3>
       <ul>
-        <li><span class="warn">14 seconds is the sweet spot</span> across Meta platforms</li>
-        <li><span class="warn">No logo or brand intro</span> — hook first, always</li>
-        <li><span class="highlight">Bold text overlay in first frame</span> — most viewers watch muted</li>
+        <li><span class="warn">14-16 seconds is the sweet spot</span> across Meta platforms &mdash; all 3 videos hit this</li>
+        <li><span class="warn">No logo or brand intro</span> &mdash; hook first, always</li>
+        <li><span class="highlight">Bold text overlay from first frame</span> &mdash; 85% of FB video is watched muted</li>
         <li>Rotate creatives every <span class="warn">7 days</span> (37% performance drop after)</li>
         <li>Kill underperformers after <span class="highlight">3 days / $50 spend</span> with no engagement</li>
         <li>Scale winners by <span class="highlight">20% daily max</span></li>
+        <li><span class="stat">Upload all 3 formats per ad</span> &mdash; Meta auto-selects best format per placement</li>
       </ul>
+
+      <h3>Next Steps &mdash; UGC Content</h3>
+      <p style="margin-top:8px;">These AI-generated videos are strong for launch. For <span class="stat">maximum conversion</span>, film a real Australian walking through the villa, talking to camera: <em>"I can't believe this is what $170K gets you in Bali."</em> UGC delivers <span class="stat">4x higher CTR</span> and <span class="stat">50% lower CPC</span> than polished content.</p>
     </div>
 
   </div>
