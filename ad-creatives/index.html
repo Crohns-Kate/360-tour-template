@@ -75,14 +75,17 @@
     .video-section-header { text-align: center; margin: 60px 0 40px; padding-top: 40px; border-top: 2px solid var(--accent); }
     .video-section-header h2 { font-family: var(--font-display); font-size: 34px; font-weight: 300; margin-bottom: 8px; }
     .video-section-header p { color: var(--muted); font-size: 14px; }
-    .video-formats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin: 20px 0; }
-    .video-formats .format-card { background: var(--bg); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; text-align: center; }
-    .video-formats .format-card video { width: 100%; display: block; }
-    .video-formats .format-card .format-label { padding: 10px; font-size: 12px; color: var(--muted); }
-    .video-formats .format-card .format-label strong { color: var(--accent); }
-    .download-links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-    .download-links a { padding: 6px 14px; background: var(--bg); border: 1px solid var(--border); color: var(--muted); text-decoration: none; border-radius: 6px; font-size: 12px; transition: all 0.2s; }
-    .download-links a:hover { border-color: var(--accent); color: var(--accent); }
+    .video-preview { background: #000; border-radius: 8px 8px 0 0; overflow: hidden; }
+    .video-preview video { width: 100%; display: block; }
+    .placement-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0; border-top: 1px solid var(--border); }
+    .placement-item { padding: 16px; text-align: center; border-right: 1px solid var(--border); }
+    .placement-item:last-child { border-right: none; }
+    .placement-item .placement-icon { font-size: 28px; margin-bottom: 6px; }
+    .placement-item .placement-name { font-size: 13px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+    .placement-item .placement-where { font-size: 11px; color: var(--muted); margin-bottom: 8px; line-height: 1.4; }
+    .placement-item .placement-file { font-size: 10px; color: var(--accent); font-family: monospace; margin-bottom: 8px; word-break: break-all; }
+    .placement-item a { display: inline-block; padding: 5px 14px; background: var(--accent); color: #fff; text-decoration: none; border-radius: 5px; font-size: 11px; font-weight: 600; transition: background 0.2s; }
+    .placement-item a:hover { background: #c49d62; }
     .caption-timeline { margin-top: 16px; }
     .caption-timeline table { width: 100%; border-collapse: collapse; font-size: 12px; }
     .caption-timeline th { text-align: left; padding: 6px 10px; border-bottom: 1px solid var(--accent); color: var(--accent); font-size: 10px; letter-spacing: 1px; text-transform: uppercase; }
@@ -94,8 +97,9 @@
       .research-summary { padding: 20px; }
       .launch-table { font-size: 11px; }
       .launch-table th, .launch-table td { padding: 6px 8px; }
-      .video-formats { grid-template-columns: 1fr; }
-      .video-formats .format-card video { max-height: 400px; object-fit: contain; background: #000; }
+      .placement-grid { grid-template-columns: 1fr; }
+      .placement-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .placement-item:last-child { border-bottom: none; }
     }
   </style>
 </head>
@@ -417,24 +421,32 @@
 
     <!-- ═══════════ VIDEO AD 1: COMPARISON ═══════════ -->
     <div class="ad-block">
-      <div class="video-formats">
-        <div class="format-card">
-          <video controls muted playsinline preload="metadata">
-            <source src="video-ad-comparison.mp4" type="video/mp4" />
-          </video>
-          <div class="format-label"><strong>16:9 Landscape</strong><br>In-stream / Feed</div>
+      <div class="video-preview">
+        <video controls muted playsinline preload="metadata">
+          <source src="video-ad-comparison.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="placement-grid">
+        <div class="placement-item">
+          <div class="placement-icon">&#x1F4F1;</div>
+          <div class="placement-name">9:16 Vertical</div>
+          <div class="placement-where">IG Reels &bull; FB Stories<br>IG Stories</div>
+          <div class="placement-file">video-ad-comparison-vertical.mp4</div>
+          <a href="video-ad-comparison-vertical.mp4" download>Download</a>
         </div>
-        <div class="format-card">
-          <video controls muted playsinline preload="metadata" style="max-height:360px;">
-            <source src="video-ad-comparison-vertical.mp4" type="video/mp4" />
-          </video>
-          <div class="format-label"><strong>9:16 Vertical</strong><br>Reels / Stories</div>
+        <div class="placement-item">
+          <div class="placement-icon">&#x25A0;</div>
+          <div class="placement-name">1:1 Square</div>
+          <div class="placement-where">FB Feed &bull; IG Feed<br>Messenger</div>
+          <div class="placement-file">video-ad-comparison-square.mp4</div>
+          <a href="video-ad-comparison-square.mp4" download>Download</a>
         </div>
-        <div class="format-card">
-          <video controls muted playsinline preload="metadata">
-            <source src="video-ad-comparison-square.mp4" type="video/mp4" />
-          </video>
-          <div class="format-label"><strong>1:1 Square</strong><br>Feed</div>
+        <div class="placement-item">
+          <div class="placement-icon">&#x1F4BB;</div>
+          <div class="placement-name">16:9 Landscape</div>
+          <div class="placement-where">FB In-stream &bull; YouTube<br>Desktop Feed</div>
+          <div class="placement-file">video-ad-comparison.mp4</div>
+          <a href="video-ad-comparison.mp4" download>Download</a>
         </div>
       </div>
       <div class="ad-info">
@@ -466,35 +478,38 @@
           <div class="copy-label">CTA</div>
           <p class="copy-text">Learn More</p>
         </div>
-        <div class="download-links">
-          <a href="video-ad-comparison.mp4" download>16:9 Landscape</a>
-          <a href="video-ad-comparison-vertical.mp4" download>9:16 Vertical</a>
-          <a href="video-ad-comparison-square.mp4" download>1:1 Square</a>
-        </div>
         <span class="budget-box">$30-40/day</span>
       </div>
     </div>
 
     <!-- ═══════════ VIDEO AD 2: FIFO ═══════════ -->
     <div class="ad-block">
-      <div class="video-formats">
-        <div class="format-card">
-          <video controls muted playsinline preload="metadata">
-            <source src="video-ad-fifo.mp4" type="video/mp4" />
-          </video>
-          <div class="format-label"><strong>16:9 Landscape</strong><br>In-stream / Feed</div>
+      <div class="video-preview">
+        <video controls muted playsinline preload="metadata">
+          <source src="video-ad-fifo.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="placement-grid">
+        <div class="placement-item">
+          <div class="placement-icon">&#x1F4F1;</div>
+          <div class="placement-name">9:16 Vertical</div>
+          <div class="placement-where">IG Reels &bull; FB Stories<br>IG Stories</div>
+          <div class="placement-file">video-ad-fifo-vertical.mp4</div>
+          <a href="video-ad-fifo-vertical.mp4" download>Download</a>
         </div>
-        <div class="format-card">
-          <video controls muted playsinline preload="metadata" style="max-height:360px;">
-            <source src="video-ad-fifo-vertical.mp4" type="video/mp4" />
-          </video>
-          <div class="format-label"><strong>9:16 Vertical</strong><br>Reels / Stories</div>
+        <div class="placement-item">
+          <div class="placement-icon">&#x25A0;</div>
+          <div class="placement-name">1:1 Square</div>
+          <div class="placement-where">FB Feed &bull; IG Feed<br>Messenger</div>
+          <div class="placement-file">video-ad-fifo-square.mp4</div>
+          <a href="video-ad-fifo-square.mp4" download>Download</a>
         </div>
-        <div class="format-card">
-          <video controls muted playsinline preload="metadata">
-            <source src="video-ad-fifo-square.mp4" type="video/mp4" />
-          </video>
-          <div class="format-label"><strong>1:1 Square</strong><br>Feed</div>
+        <div class="placement-item">
+          <div class="placement-icon">&#x1F4BB;</div>
+          <div class="placement-name">16:9 Landscape</div>
+          <div class="placement-where">FB In-stream &bull; YouTube<br>Desktop Feed</div>
+          <div class="placement-file">video-ad-fifo.mp4</div>
+          <a href="video-ad-fifo.mp4" download>Download</a>
         </div>
       </div>
       <div class="ad-info">
@@ -528,35 +543,38 @@
           <div class="copy-label">Targeting</div>
           <p class="copy-text">FIFO workers, mining/resources, 30-55, Perth, Darwin, Karratha, Newman, regional WA/QLD/NT</p>
         </div>
-        <div class="download-links">
-          <a href="video-ad-fifo.mp4" download>16:9 Landscape</a>
-          <a href="video-ad-fifo-vertical.mp4" download>9:16 Vertical</a>
-          <a href="video-ad-fifo-square.mp4" download>1:1 Square</a>
-        </div>
         <span class="budget-box">$20-30/day</span>
       </div>
     </div>
 
     <!-- ═══════════ VIDEO AD 3: WALKTHROUGH ═══════════ -->
     <div class="ad-block">
-      <div class="video-formats">
-        <div class="format-card">
-          <video controls muted playsinline preload="metadata">
-            <source src="video-ad-walkthrough.mp4" type="video/mp4" />
-          </video>
-          <div class="format-label"><strong>16:9 Landscape</strong><br>In-stream / Feed</div>
+      <div class="video-preview">
+        <video controls muted playsinline preload="metadata">
+          <source src="video-ad-walkthrough.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="placement-grid">
+        <div class="placement-item">
+          <div class="placement-icon">&#x1F4F1;</div>
+          <div class="placement-name">9:16 Vertical</div>
+          <div class="placement-where">IG Reels &bull; FB Stories<br>IG Stories</div>
+          <div class="placement-file">video-ad-walkthrough-vertical.mp4</div>
+          <a href="video-ad-walkthrough-vertical.mp4" download>Download</a>
         </div>
-        <div class="format-card">
-          <video controls muted playsinline preload="metadata" style="max-height:360px;">
-            <source src="video-ad-walkthrough-vertical.mp4" type="video/mp4" />
-          </video>
-          <div class="format-label"><strong>9:16 Vertical</strong><br>Reels / Stories</div>
+        <div class="placement-item">
+          <div class="placement-icon">&#x25A0;</div>
+          <div class="placement-name">1:1 Square</div>
+          <div class="placement-where">FB Feed &bull; IG Feed<br>Messenger</div>
+          <div class="placement-file">video-ad-walkthrough-square.mp4</div>
+          <a href="video-ad-walkthrough-square.mp4" download>Download</a>
         </div>
-        <div class="format-card">
-          <video controls muted playsinline preload="metadata">
-            <source src="video-ad-walkthrough-square.mp4" type="video/mp4" />
-          </video>
-          <div class="format-label"><strong>1:1 Square</strong><br>Feed</div>
+        <div class="placement-item">
+          <div class="placement-icon">&#x1F4BB;</div>
+          <div class="placement-name">16:9 Landscape</div>
+          <div class="placement-where">FB In-stream &bull; YouTube<br>Desktop Feed</div>
+          <div class="placement-file">video-ad-walkthrough.mp4</div>
+          <a href="video-ad-walkthrough.mp4" download>Download</a>
         </div>
       </div>
       <div class="ad-info">
@@ -587,11 +605,6 @@
           <p class="copy-text headline">Only 3 Available. From $170,000.</p>
           <div class="copy-label">CTA</div>
           <p class="copy-text">Learn More</p>
-        </div>
-        <div class="download-links">
-          <a href="video-ad-walkthrough.mp4" download>16:9 Landscape</a>
-          <a href="video-ad-walkthrough-vertical.mp4" download>9:16 Vertical</a>
-          <a href="video-ad-walkthrough-square.mp4" download>1:1 Square</a>
         </div>
         <span class="budget-box">$15-25/day</span>
       </div>
