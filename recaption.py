@@ -13,18 +13,18 @@ VIDEOS = [
         "input": "video-ad-comparison.mp4",
         "output": "video-ad-comparison-new.mp4",
         "captions": [
-            # Top headline — visible from first second throughout
-            {"text": "Same price. Different life.", "start": 0.3, "end": 7, "y": "h*0.07", "size": 52, "font": "segoeuib.ttf", "color": "white"},
+            # Top headline — visible from first second, ends before end card
+            {"text": "Same price. Different life.", "start": 0.3, "end": 6.5, "y": "h*0.07", "size": 52, "font": "segoeuib.ttf", "color": "white"},
             # Sydney section (first half)
             {"text": "$175,000 — Sydney", "start": 0.5, "end": 3.8, "y": "h*0.52", "size": 56, "font": "segoeuib.ttf", "color": "white"},
             {"text": "1 bed. No pool. No garden.", "start": 0.8, "end": 3.8, "y": "h*0.62", "size": 28, "font": "segoeui.ttf", "color": "white@0.9"},
             # Bali section (second half)
-            {"text": "$175,000 — Bali", "start": 4.2, "end": 7, "y": "h*0.52", "size": 56, "font": "segoeuib.ttf", "color": "white"},
-            {"text": "3 bed. 3 bath. Private pool. North Canggu.", "start": 4.5, "end": 7, "y": "h*0.62", "size": 28, "font": "segoeui.ttf", "color": "white@0.9"},
-            # End card — headline stays big
-            {"text": "Same price. Different life.", "start": 7, "end": 8, "y": "h*0.33", "size": 62, "font": "segoeuib.ttf", "color": "white"},
-            {"text": "3 villas from $170,000", "start": 7, "end": 8, "y": "h*0.48", "size": 32, "font": "segoeuib.ttf", "color": "#b08d57"},
-            {"text": "North Canggu, Bali", "start": 7, "end": 8, "y": "h*0.57", "size": 28, "font": "segoeuib.ttf", "color": "#b08d57"},
+            {"text": "$175,000 — Bali", "start": 4.2, "end": 6.5, "y": "h*0.52", "size": 56, "font": "segoeuib.ttf", "color": "white"},
+            {"text": "3 bed. 3 bath. Private pool. North Canggu.", "start": 4.5, "end": 6.5, "y": "h*0.62", "size": 28, "font": "segoeui.ttf", "color": "white@0.9"},
+            # End card — clear gap, no overlap
+            {"text": "Same price. Different life.", "start": 6.8, "end": 8, "y": "h*0.33", "size": 62, "font": "segoeuib.ttf", "color": "white"},
+            {"text": "3 villas from $170,000", "start": 6.8, "end": 8, "y": "h*0.48", "size": 32, "font": "segoeuib.ttf", "color": "#b08d57"},
+            {"text": "North Canggu, Bali", "start": 6.8, "end": 8, "y": "h*0.57", "size": 28, "font": "segoeuib.ttf", "color": "#b08d57"},
         ]
     },
     {
