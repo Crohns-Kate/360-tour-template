@@ -13,6 +13,39 @@
   <meta property="og:url" content="https://crohns-kate.github.io/360-tour-template/canggu-villas.html" />
   <meta property="og:type" content="website" />
 
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-V6F4VPVT53"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-V6F4VPVT53');
+  </script>
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+    document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '624392843149013');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=624392843149013&ev=PageView&noscript=1"/></noscript>
+
+  <!-- Hotjar -->
+  <script>
+    (function(h,o,t,j,a,r){
+      h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+      h._hjSettings={hjid:6668487,hjsv:6};
+      a=o.getElementsByTagName('head')[0];
+      r=o.createElement('script');r.async=1;
+      r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+      a.appendChild(r);
+    })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+  </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
@@ -661,17 +694,17 @@
       <h2 class="contact-heading">Enquire Now</h2>
       <p class="contact-subheading">Speak directly with Arjan for pricing, availability, and site visits</p>
       <div class="contact-cards">
-        <a href="https://wa.me/62881038820967" target="_blank" rel="noopener" class="contact-card contact-whatsapp">
+        <a href="https://wa.me/62881038820967" target="_blank" rel="noopener" class="contact-card contact-whatsapp" onclick="trackLead('whatsapp')">
           <span class="contact-icon">💬</span>
           <span class="contact-label">WhatsApp</span>
           <span class="contact-value">+62 881 038 820 967</span>
         </a>
-        <a href="tel:+61401687714" class="contact-card contact-phone">
+        <a href="tel:+61401687714" class="contact-card contact-phone" onclick="trackLead('phone')">
           <span class="contact-icon">📞</span>
           <span class="contact-label">Call (AU)</span>
           <span class="contact-value">+61 401 687 714</span>
         </a>
-        <a href="https://mail.google.com/mail/?view=cm&to=arjan@insituasia.com&su=North%20Canggu%20Villas%20Enquiry" target="_blank" rel="noopener" class="contact-card contact-email">
+        <a href="https://mail.google.com/mail/?view=cm&to=arjan@insituasia.com&su=North%20Canggu%20Villas%20Enquiry" target="_blank" rel="noopener" class="contact-card contact-email" onclick="trackLead('email')">
           <span class="contact-icon">✉️</span>
           <span class="contact-label">Email</span>
           <span class="contact-value">arjan@insituasia.com</span>
@@ -690,8 +723,8 @@
       <strong>From US $170,000</strong> · 28 Year Lease
     </div>
     <div class="sticky-cta-buttons">
-      <a href="https://wa.me/62881038820967" target="_blank" rel="noopener" class="sticky-btn sticky-btn-wa">WhatsApp</a>
-      <a href="#enquire" class="sticky-btn sticky-btn-enquire">Enquire</a>
+      <a href="https://wa.me/62881038820967" target="_blank" rel="noopener" class="sticky-btn sticky-btn-wa" onclick="trackLead('whatsapp_sticky')">WhatsApp</a>
+      <a href="#enquire" class="sticky-btn sticky-btn-enquire" onclick="trackLead('enquire_sticky')">Enquire</a>
     </div>
   </div>
 
@@ -805,6 +838,24 @@
     });
 
     buildGallery();
+  </script>
+
+  <!-- Conversion tracking for contact buttons -->
+  <script>
+    function trackLead(method) {
+      // GA4 event
+      if (typeof gtag === 'function') {
+        gtag('event', 'generate_lead', {
+          event_category: 'enquiry',
+          event_label: method,
+          value: 1
+        });
+      }
+      // Meta Pixel event (fires when pixel is active)
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead', { content_name: method });
+      }
+    }
   </script>
 
 </body>
