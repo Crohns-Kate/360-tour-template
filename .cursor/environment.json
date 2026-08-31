@@ -1,0 +1,11 @@
+{
+  "name": "360 Property Tour",
+  "install": "python3 --version && node --version",
+  "terminals": [
+    {
+      "name": "tour-server",
+      "command": "python3 -m http.server 8080 --bind 0.0.0.0"
+    }
+  ],
+  "ports": [8080]
+}
